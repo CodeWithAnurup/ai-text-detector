@@ -12,8 +12,9 @@ ENV/
 # Data
 data/raw/
 
-# Models
-models/*.joblib
+# Models (allow trained detector artifact)
+models/*
+!models/detector.joblib
 
 # Jupyter Notebook
 .ipynb_checkpoints
