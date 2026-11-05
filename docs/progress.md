@@ -59,3 +59,9 @@
   Inspection reveals these 5 human texts featured unusually short, uniform sentences and highly generic expository phrasing with minimal rare tokens.
   This lowered their perplexity (<20) and sentence-level variance, crossing into the AI prediction threshold.
   Saved calibration curve in `docs/calibration_curve.png` and metrics in `docs/test_metrics.md`.
+
+## Phase 7: Inference function (the v1 deliverable)
+- Date: 2026-11-05
+- What was done: Implemented `predict_ai_probability(text: str) -> dict` in `src/predict.py`. Loads model once globally, extracts features, fills missing values with train medians, calculates calibrated probability, enforces token-count warnings (<50 tokens), raises ValueError on empty strings, and applies label bands (<0.35 likely_human, 0.35-0.65 uncertain, >0.65 likely_ai).
+- Result / metric: Validated on 5 manual test cases (2 human, 2 AI, 1 short text, plus empty input validation). All behaviors behave as specified.
+- Issues and decisions: Maintained clean dictionary contract matching project schema.
