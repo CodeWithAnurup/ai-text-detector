@@ -65,3 +65,9 @@
 - What was done: Implemented `predict_ai_probability(text: str) -> dict` in `src/predict.py`. Loads model once globally, extracts features, fills missing values with train medians, calculates calibrated probability, enforces token-count warnings (<50 tokens), raises ValueError on empty strings, and applies label bands (<0.35 likely_human, 0.35-0.65 uncertain, >0.65 likely_ai).
 - Result / metric: Validated on 5 manual test cases (2 human, 2 AI, 1 short text, plus empty input validation). All behaviors behave as specified.
 - Issues and decisions: Maintained clean dictionary contract matching project schema.
+
+## Phase 8: Streamlit demo
+- Date: 2026-11-05
+- What was done: Built Streamlit application in `app.py` with text area, sample selectors, dynamic progress bar, probability percentages, token counter, classification badge, reliability warning, and legal disclaimer footer.
+- Result / metric: Verified clean startup via headless server check on port 8501.
+- Issues and decisions: Added sample text dropdown for instant user testing.
