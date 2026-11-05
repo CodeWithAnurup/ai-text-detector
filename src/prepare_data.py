@@ -29,11 +29,10 @@ def main():
     df_raw.to_csv(raw_csv_path, index=False)
     print(f"Raw data saved to {raw_csv_path} with {len(df_raw)} rows.")
     
-    # 2. Keep only two columns: text, label
+    # 2. Keep only two columns: text, label (0 = human, 1 = AI)
+    # Note: In alexok2006/ai-vs-human-texts, 0=AI, 1=Human. We remap to 0=human, 1=AI per plan.
     df = df_raw[["text", "label"]].copy()
-    
-    # Ensure label is integer (0 or 1)
-    df["label"] = df["label"].astype(int)
+    df["label"] = 1 - df["label"].astype(int)
     
     # 3. Clean: drop nulls and duplicates, drop texts under 30 words
     before_clean = len(df)
