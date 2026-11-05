@@ -20,6 +20,7 @@ CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&display=swap');
 
 html, body, .stApp, .stApp p, .stApp label, .stApp span { font-family: 'IBM Plex Sans', sans-serif; }
+[data-testid="stIconMaterial"], .material-symbols-rounded, .material-icons { font-family: 'Material Symbols Rounded', 'Material Icons' !important; }
 .stApp { background: #EEF1F5; color: #14213D; }
 #MainMenu, footer, header { visibility: hidden; }
 .block-container { max-width: 1100px; padding-top: 2.4rem; padding-bottom: 3rem; }
