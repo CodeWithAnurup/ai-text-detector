@@ -11,3 +11,9 @@
 - What was done: Downloaded labeled human-vs-AI text dataset into `data/raw/`. Cleaned nulls, duplicates, and texts with < 30 words. Sampled a balanced 1000 rows (500 human, 500 AI) with random_state=42. Stratified split into train (700 rows, 350/350), val (150 rows, 75/75), and test (150 rows, 75/75).
 - Result / metric: 3 CSVs created in `data/` (`train.csv`, `val.csv`, `test.csv`) with zero overlap across splits. Test set isolated.
 - Issues and decisions: Verified word lengths (>=30) and strict 50:50 balance across all splits.
+
+## Phase 2: Perplexity feature
+- Date: 2026-11-05
+- What was done: Implemented `perplexity(text, max_tokens=256)` in `src/features.py` using GPT-2 in eval mode. Handles short text (<10 tokens) safely by returning None.
+- Result / metric: Verified on sample texts; returns valid float for standard text and None for <10 tokens.
+- Issues and decisions: Set torch.no_grad() and model caching globally for performance.
