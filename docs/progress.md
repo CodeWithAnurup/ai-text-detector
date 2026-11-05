@@ -32,3 +32,13 @@
   - Median Burstiness: Human = 61.02 vs AI = 14.28 (AI is significantly lower, as expected).
   - Single-threshold baseline (predict AI if ppl < 23.55): Train accuracy = 91.00%, Validation accuracy = 91.33% (Human accuracy: 93.33%, AI accuracy: 89.33%).
 - Issues and decisions: Confirmed that raw dataset labels followed alphabetical encoding (0=AI, 1=Human); remapped to project specification 0=Human, 1=AI. All distributions align with theory.
+
+## Phase 5: Train the probability model
+- Date: 2026-11-05
+- What was done: Built pipelines with StandardScaler for Logistic Regression and Random Forest. Evaluated on validation set. Calibrated chosen model with CalibratedClassifierCV (method='sigmoid', cv=5) and saved artifact to `models/detector.joblib`.
+- Result / metric:
+  - Logistic Regression (val): ROC-AUC = 0.9957, F1 = 0.9804, Acc = 0.9800
+  - Random Forest (val): ROC-AUC = 1.0000, F1 = 0.9933, Acc = 0.9933
+  - Selected Logistic Regression (simpler, well-calibrated probabilities).
+  - Calibrated Model (val): ROC-AUC = 0.9980, F1 = 0.9740, Acc = 0.9733 (Precision: Human 1.00 / AI 0.95; Recall: Human 0.95 / AI 1.00).
+- Issues and decisions: Saved model artifact with metadata and train imputation medians.
