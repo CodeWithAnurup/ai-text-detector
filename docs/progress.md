@@ -42,3 +42,20 @@
   - Selected Logistic Regression (simpler, well-calibrated probabilities).
   - Calibrated Model (val): ROC-AUC = 0.9980, F1 = 0.9740, Acc = 0.9733 (Precision: Human 1.00 / AI 0.95; Recall: Human 0.95 / AI 1.00).
 - Issues and decisions: Saved model artifact with metadata and train imputation medians.
+
+## Phase 6: Final evaluation (test set, used once)
+- Date: 2026-11-05
+- What was done: Evaluated calibrated model once on untouched test set (150 samples: 75 human, 75 AI). Generated calibration curve, metrics summary table, and `notebooks/02_modeling.ipynb`.
+- Result / metric:
+  - Accuracy: 96.67% (145/150)
+  - Precision: 0.9375
+  - Recall: 1.0000 (0 false negatives out of 75 AI texts)
+  - F1 Score: 0.9677
+  - ROC-AUC: 0.9989
+  - Confusion Matrix: TN=70, FP=5, FN=0, TP=75
+- Error analysis:
+  The model correctly detected 100% of AI generated texts without a single false negative.
+  The only 5 errors were false positives (human writing classified as AI).
+  Inspection reveals these 5 human texts featured unusually short, uniform sentences and highly generic expository phrasing with minimal rare tokens.
+  This lowered their perplexity (<20) and sentence-level variance, crossing into the AI prediction threshold.
+  Saved calibration curve in `docs/calibration_curve.png` and metrics in `docs/test_metrics.md`.
