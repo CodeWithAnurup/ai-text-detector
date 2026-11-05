@@ -71,3 +71,8 @@
 - What was done: Built Streamlit application in `app.py` with text area, sample selectors, dynamic progress bar, probability percentages, token counter, classification badge, reliability warning, and legal disclaimer footer.
 - Result / metric: Verified clean startup via headless server check on port 8501.
 - Issues and decisions: Added sample text dropdown for instant user testing.
+
+## Phase 9: README and polish
+- Date: 2026-11-05
+- What was done: Authored comprehensive documentation in `README.md` covering project architecture, mathematical formulation of Perplexity and Burstiness, benchmark metrics table, quick-start installation commands, Python API usage, edge cases & limitations, and v2 roadmap.
+- Result / metric: All sections complete; project is self-contained and reproducible.
